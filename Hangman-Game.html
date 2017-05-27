@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <title>JavaScript Content!</title>
+</head>
+<body>
+
+<h1 id='title'> Say Hello! </h1>
+
+<h2 id='alert'> Press any key to start the game! </h2>
+
+
+
+<script>
+
+// starts as empty variable and will only have one variable at a time
+var guess = ('')
+
+// is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
+
+var correctGuess = []
+
+// is an array and will update/be modified with each letter than the user guesses that is wrong
+var wrongGuess = []
+
+// starts as an empty variable that will be updated with a string.  That string will be randomly selected from the wordList
+var word = ("")
+
+// The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
+var remaining = 9
+
+// Array of words the computer can randomly pick from.  
+
+var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
+
+// The game will start when the user selected a random key from the key board. Include HTML to update users.
+// When the user selects a random key, the computer randomly selects a word from the array wordList
+
+  function wordNumber() {
+    var compRandom = (wordList[(Math.floor(Math.random() * wordList.length))]);
+    return word = compRandom;
+  }
+
+//Once the word has been randomly selected, the same number of underscores will appear as there are letters in the randomly picked word
+
+
+
+
+
+// $("#random-button").on('click', function() {
+      //     $("#random-number").html(Math.floor(Math.random() * 1000));
+      // })
+
+
+
+
+  </script>
+
+</body>
+</html>
