@@ -19,20 +19,20 @@
 <script>
 
 // starts as empty variable and will only have one variable at a time
-var guess = ('')
+var guess = ('');
 
 // is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
 
-var correctGuess = []
+var correctGuess = [];
 
 // is an array and will update/be modified with each letter than the user guesses that is wrong
-var wrongGuess = []
+var wrongGuess = [];
 
 // starts as an empty variable that will be updated with a string.  That string will be randomly selected from the wordList
-var word = ("")
+var word = ('');
 
 // The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
-var remaining = 9
+var remaining = 9;
 
   
 var underscores = [];
@@ -40,6 +40,13 @@ var underscores = [];
 // Array of words the computer can randomly pick from.  
 
 var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
+
+//start game/restart game
+
+// function start() {
+//   console.clear();
+//   wordNumber();
+// }
 
 // The game will start when the user selected a random key from the key board. Include HTML to update users.
 // When the user selects a random key, the computer randomly selects a word from the array wordList
@@ -60,16 +67,28 @@ var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
 
 // User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
 
-onKeyUp(function(event) {
+function game(e) {
 
-  var letterInWord = word[word.indexOf(event)]
+  // onKeyUp(function(event) {
 
-  if letterInWord = -1 {
-    wrongGuess.push(event); 
+  var letterInWord = word[word.indexOf(e)]
+  var wordSplit = word.split()
+
+  if (letterInWord < 0) {
+    wrongGuess.push(e);
+     // if wrongGuess == 9 run game over function
   } else {
-    underscores.push()
-  }
+    // if it's the right guess, push it to underscores
+    // if underscores == word.splice, they won! Run won function and end game 
+    underscores.push((underscores.splice(letterInWord, 1, e)));
+    if (underscores == word.split()) {
+      function youWin() {
+        alert("Great Job! You won! Are you ready to play again? ");
+      }
+    }
 
+  }
+}
 
 
 // $("#random-button").on('click', function() {
