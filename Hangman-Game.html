@@ -34,6 +34,9 @@ var word = ("")
 // The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
 var remaining = 9
 
+  
+var underscores = [];
+
 // Array of words the computer can randomly pick from.  
 
 var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
@@ -46,9 +49,26 @@ var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
     return word = compRandom;
   }
 
+
 //Once the word has been randomly selected, the same number of underscores will appear as there are letters in the randomly picked word
 
+  function wordLe() { 
+  for(var i = 0; i < word.length; i++) {
+      underscores.push('_ ');
+  }}
 
+
+// User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
+
+onKeyUp(function(event) {
+
+  var letterInWord = word[word.indexOf(event)]
+
+  if letterInWord = -1 {
+    wrongGuess.push(event); 
+  } else {
+    underscores.push()
+  }
 
 
 
