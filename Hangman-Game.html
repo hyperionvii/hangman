@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+  <title>JavaScript Content!</title>
+
   <meta charset="UTF-8">
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <title>JavaScript Content!</title>
 
 </head>
 
@@ -19,10 +21,15 @@
 
 
 
-<script>
+<script type="text/javascript">
 
 // $(document).ready(function() {
 // starts as empty variable and will only have one variable at a time
+
+  var underscores = []
+
+  var wordList = ["Hello", "Bonjour", "Ola", "Yo", "Salaam", "Namaste", "Ohayo"];
+
   var guess = ('');
 // is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
   var correctGuess = [];
@@ -33,7 +40,7 @@
 // The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
   var remaining = 9;
   
-  var underscores = [];
+;
 
   // function reStart() {
   //   console.clear();
@@ -43,25 +50,24 @@
 // The game will start when the user selected a random key from the key board. Include HTML to update users.
 // When the user selects a random key, the computer randomly selects a word from the array wordList
   
-  var wordList = ["Hello", "Bonjour", "Ola", "Yo"];
-
 
   function wordNumber(array) {
     var compRandom = (array[(Math.floor(Math.random() * array.length ))]);
-    return compRandom;
+    for(var i = 0; i < compRandom.length; i++) {
+      underscores.push('_ ');
   }
+    return compRandom}
 
 //Once the word has been randomly selected, the same number of underscores will appear as there are letters in the randomly picked word
 
-  function wordLe() { 
-    for(var i = 0; i < word.length; i++) {
-    underscores.push('_ ');
-  }}
+  // function wordLe() { 
+    
+  // }}
 // User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
 
-  function game(e) {
+  function game(event) {
 
-    var letterInWord = word.indexOf(e)
+    var letterInWord = word.indexOf(event)
     var wordSplit = word.split()
 
     if (letterInWord == -1) {
@@ -69,7 +75,7 @@
     } 
     else 
     {
-     underscores.push((underscores.splice(letterInWord, 1, e)));}
+     underscores.push((underscores.splice(letterInWord, 1, event)));}
    }
 
   function won() {
