@@ -21,7 +21,7 @@
 
 <script>
 
-$(document).ready(function() {
+// $(document).ready(function() {
 // starts as empty variable and will only have one variable at a time
   var guess = ('');
 // is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
@@ -44,6 +44,7 @@ $(document).ready(function() {
 // When the user selects a random key, the computer randomly selects a word from the array wordList
   
   var wordList = ["Hello", "Bonjour", "Ola", "Yo"];
+
 
   function wordNumber(array) {
     var compRandom = (array[(Math.floor(Math.random() * array.length ))]);
@@ -76,7 +77,7 @@ $(document).ready(function() {
       alert("Great Job! You won! Are you ready to play again? ");}
      }
 
-})
+// })
 
   </script>
 
