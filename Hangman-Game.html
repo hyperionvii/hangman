@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <!-- Added a link to Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <title>JavaScript Content!</title>
@@ -18,35 +16,26 @@
 
 <script>
 
+$(document).ready(function() {
 // starts as empty variable and will only have one variable at a time
-var guess = ('');
-
+  var guess = ('');
 // is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
-
-var correctGuess = [];
-
+  var correctGuess = [];
 // is an array and will update/be modified with each letter than the user guesses that is wrong
-var wrongGuess = [];
-
+  var wrongGuess = [];
 // starts as an empty variable that will be updated with a string.  That string will be randomly selected from the wordList
-var word = ('');
-
+  var word = ('');
 // The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
-var remaining = 9;
-
+  var remaining = 9;
   
-var underscores = [];
-
+  var underscores = [];
 // Array of words the computer can randomly pick from.  
+  var wordList = ["Hello", "Bonjour", "Ola", "Yo"];
 
-var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
-
-//start game/restart game
-
-// function start() {
-//   console.clear();
-//   wordNumber();
-// }
+  // function reStart() {
+  //   console.clear();
+  //   wordNumber();
+  // }
 
 // The game will start when the user selected a random key from the key board. Include HTML to update users.
 // When the user selects a random key, the computer randomly selects a word from the array wordList
@@ -56,49 +45,36 @@ var wordList = ["Hello", "Bonjour", "Ola", "Yo"]
     return word = compRandom;
   }
 
-
 //Once the word has been randomly selected, the same number of underscores will appear as there are letters in the randomly picked word
 
   function wordLe() { 
-  for(var i = 0; i < word.length; i++) {
-      underscores.push('_ ');
+    for(var i = 0; i < word.length; i++) {
+    underscores.push('_ ');
   }}
-
-
 // User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
 
-function game(e) {
+  function game(e) {
 
-  // onKeyUp(function(event) {
+    var letterInWord = word.indexOf(e)
+    var wordSplit = word.split()
 
-  var letterInWord = word[word.indexOf(e)]
-  var wordSplit = word.split()
+    if (letterInWord == -1) {
+     wrongGuess.push(e);
+    } 
+    else 
+    {
+     underscores.push((underscores.splice(letterInWord, 1, e)));}
+   }
 
-  if (letterInWord < 0) {
-    wrongGuess.push(e);
-     // if wrongGuess == 9 run game over function
-  } else {
-    // if it's the right guess, push it to underscores
-    // if underscores == word.splice, they won! Run won function and end game 
-    underscores.push((underscores.splice(letterInWord, 1, e)));
+  function won() {
     if (underscores == word.split()) {
-      function youWin() {
-        alert("Great Job! You won! Are you ready to play again? ");
-      }
-    }
+      alert("Great Job! You won! Are you ready to play again? ");}
+     }
 
-  }
-}
-
-
-// $("#random-button").on('click', function() {
-      //     $("#random-number").html(Math.floor(Math.random() * 1000));
-      // })
-
-
-
+})
 
   </script>
-
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  
 </body>
 </html>
