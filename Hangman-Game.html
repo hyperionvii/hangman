@@ -23,7 +23,10 @@
 
 <h2 id='wordUn'> </h2>
 
-<span id="derscores"></span>
+<h2 id='wrong'> </h2>
+
+<h2 id='winOrLose'> </h2>
+
 
 </div>
 
@@ -32,35 +35,70 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-// starts as empty variable and will only have one variable at a time
 
-  var underscores = []
+
+  var underscores = [];
 
   var wordList = ["Hello", "Bonjour", "Ola", "Yo", "Salaam", "Namaste", "Ohayo", "Merhaba"];
 
   var guess = ('');
-// is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
+
   var correctGuess = [];
-// is an array and will update/be modified with each letter than the user guesses that is wrong
+
   var wrongGuess = [];
-// starts as an empty variable that will be updated with a string.  That string will be randomly selected from the wordList
+
   var word = wordNumber(wordList);
-// The user starts off with nine guesses and the variable has 1 subtracted from it every time they guess incorrectly. 
+
   var remaining = 9;
   
-;
 
+
+//This is working...mostly
 $("button").on('click', function() {
     wordNumber(wordList);
-          $("#wordUn").html(underscores);
+          $("#wordUn").html("<h1>" + underscores + "</h1>");
       })
 
-// The game will start when the user selected a random key from the key board. Include HTML to update users.
-// When the user selects a random key, the computer randomly selects a word from the array wordList
-  
-  // function updateScreen(z) {
-  //   document.getElementById("#derscores").innerHTML = z;
-  // }
+$("wordUn").on('keyup', function() {
+    gameRun(event);
+      $("#wordUn").html("<h1>" + underscores + "</h1>");
+      })
+
+// $(document).on('keypress','selector', gameRun(event))
+// this is not working! >_<
+
+
+function gameRun (letter) {
+
+    // event = event || window.event;
+    var letterInWord = word.indexOf(letter)
+    var wordSplit = word.split()
+
+    if (letterInWord == -1) {
+
+      if (wrongGuess.length == 9) { 
+        document.write("You Lost! Au Revoir!"); 
+        return reStart(); }
+      else { wrongGuess.push(letter);
+        $("#wrong").html("<h2>" + wrongGuess + "</h2>");
+          } 
+
+    } else {
+
+        if (underscores == word.split()) {
+        $("#wingOrLose").html("<h2>" + "You Win!" + "</h2>");
+
+      } else {
+
+        (underscores.splice(letterInWord, 1, event));
+        $("#wordUn").html("<h2>" + underscores + "</h2>");
+      }
+      }
+    }
+
+
+   
+
 
   function wordNumber(list) {
     var compRandom = (list[(Math.floor(Math.random() * list.length ))]);
@@ -69,29 +107,6 @@ $("button").on('click', function() {
   }
     return compRandom}
 
-//Once the word has been randomly selected, the same number of underscores will appear as there are letters in the randomly picked word
-
-  // function wordLe() { 
-    
-  // }}
-// User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
-
-  function game(event) {
-
-    var letterInWord = word.indexOf(event)
-    var wordSplit = word.split()
-
-    if (letterInWord == -1) {
-     if (wrongGuess.length == 9) { 
-     document.write("You Lost! Au Revoir!") 
-     return reStart() }
-     else {wrongGuess.push(event);} 
-    } else {
-      if (underscores == word.split()) {
-      alert("Great Job! You won! Are you ready to play again? ");
-    } else {
-     (underscores.splice(letterInWord, 1, event));}
-   }}
 
   function won() {
     if (underscores == word.split()) {
@@ -99,11 +114,35 @@ $("button").on('click', function() {
      }
 
 
-function reStart() {
+  function reStart() {
     console.clear();
   }
 
 })
+
+
+
+
+  // User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
+
+  // function game(event) {
+
+  //   var letterInWord = word.indexOf(event)
+  //   var wordSplit = word.split()
+
+  //   if (letterInWord == -1) {
+  //    if (wrongGuess.length == 9) { 
+  //    document.write("You Lost! Au Revoir!") 
+  //    return reStart() }
+  //    else {wrongGuess.push(event);} 
+  //   } else {
+  //     if (underscores == word.split()) {
+  //     alert("Great Job! You won! Are you ready to play again? ");
+  //   } else {
+  //    (underscores.splice(letterInWord, 1, event));}
+  //  }}
+
+
 
   </script>
 
