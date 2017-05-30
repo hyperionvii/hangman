@@ -37,12 +37,14 @@
 
 // $(document).ready(function() {
 
-//The following is still going wrong: 1) The underscores displayed on the screen don't appear to to be displaying properly.  It also no long appears to be pulling from my wordList - I'm not sure what the underscores are from but at somepoint I changed something and it stoped showing exactly what was in the underscores variable. 2)   
+//Things going wrong:  - clicking on the button to start shows the underscores on the screen, but it's not the right number of underscores. Why are there more underscores? FIXED
+// -  Not all letters are updating in the underscores array...need to do something to review all letters in the array...not just the first letter.  
+// -  Selecting buttons from keyboard is not generating letters in the underscore.  Figure this out last.  
 
 
   var underscores = [];
 
-  var wordList = ["Hello", "Bonjour", "Ola", "Yo", "Salaam", "Namaste", "Ohayo", "Merhaba"];
+  var wordList = ["hello", "honjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
 
   var guess = ('');
 
@@ -50,7 +52,7 @@
 
   var wrongGuess = [];
 
-  var word = wordNumber(wordList);
+  var word = ('');
 
   var remaining = 9;
 
@@ -58,25 +60,37 @@
   
 
 
-// This is working...mostly.  Clicking on the button runs the  wordNumber function. After that, html is updated with the correct number of underscores. 
+// This is working...mostly.  
+
+
 $("button").on('click', function() {
     wordNumber(wordList);
           $("#wordUn").html("<h1>" + underscores + "</h1>");
       })
 
-//this doesn't do anything
+// this is not working! >_<
 
 // $("wordUn").on('keyup', function() {
 //     gameRun(letter);
 //       $("#wordUn").html("<h1>" + underscores + "</h1>");
 //       })
 
-// this is not working! >_<
+do {
+    pos = radmWord.indexOf(guessedLetter, pos);
+
+    if(pos > -1) {
+        genRadmLetter[pos] = guessedLetter;
+        result = true;
+        pos++;
+    }
+} while(pos > -1 && pos < radmWord.length());
+
+
 
 
 function gameRun(letter) {
 
-    var letterInWord = word.indexOf(letter)
+    var letterInWord = word.indexOf((letter).toLowerCase())
     var wordSplit = word.split("")
 
     if (letterInWord == -1) {
@@ -95,6 +109,11 @@ function gameRun(letter) {
 
       } else {
 
+        //for( i = 0; )
+
+        // if the letter is == to underscores[indexOf(letter).toLowerCase]
+
+
         (underscores.splice(letterInWord, 1, letter));
         $("#wordUn").html("<h2>" + underscores + "</h2>");
       }
@@ -108,7 +127,7 @@ function gameRun(letter) {
     for(var i = 0; i < compRandom.length; i++) {
       underscores.push('_ ');
   }
-    return compRandom}
+    word = compRandom}
 
 
   // function won() {
