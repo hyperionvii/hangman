@@ -28,7 +28,7 @@
 
   var underscores = []
 
-  var wordList = ["Hello", "Bonjour", "Ola", "Yo", "Salaam", "Namaste", "Ohayo"];
+  var wordList = ["Hello", "Bonjour", "Ola", "Yo", "Salaam", "Namaste", "Ohayo", "Merhaba"];
 
   var guess = ('');
 // is an array and will update will be modified with each letter,that the ueser guesses, that also matches the computer generated word
@@ -42,10 +42,6 @@
   
 ;
 
-  // function reStart() {
-  //   console.clear();
-  //   wordNumber();
-  // }
 
 // The game will start when the user selected a random key from the key board. Include HTML to update users.
 // When the user selects a random key, the computer randomly selects a word from the array wordList
@@ -71,17 +67,26 @@
     var wordSplit = word.split()
 
     if (letterInWord == -1) {
-     wrongGuess.push(e);
-    } 
-    else 
-    {
-     underscores.push((underscores.splice(letterInWord, 1, event)));}
-   }
+     if (wrongGuess.length == 9) { 
+     document.write("You Lost! Au Revoir!") 
+     return reStart() }
+     else {wrongGuess.push(event);} 
+    } else {
+      if (underscores == word.split()) {
+      alert("Great Job! You won! Are you ready to play again? ");
+    } else {
+     (underscores.splice(letterInWord, 1, event));}
+   }}
 
   function won() {
     if (underscores == word.split()) {
       alert("Great Job! You won! Are you ready to play again? ");}
      }
+
+
+function reStart() {
+    console.clear();
+  }
 
 // })
 
