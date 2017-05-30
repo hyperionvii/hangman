@@ -32,9 +32,12 @@
 
 
 
+
 <script type="text/javascript">
 
-$(document).ready(function() {
+// $(document).ready(function() {
+
+//The following is still going wrong: 1) The underscores displayed on the screen don't appear to to be displaying properly.  It also no long appears to be pulling from my wordList - I'm not sure what the underscores are from but at somepoint I changed something and it stoped showing exactly what was in the underscores variable. 2)   
 
 
   var underscores = [];
@@ -50,34 +53,36 @@ $(document).ready(function() {
   var word = wordNumber(wordList);
 
   var remaining = 9;
+
+  // var letter = jQuery.Event( "keyup" );
   
 
 
-//This is working...mostly
+// This is working...mostly.  Clicking on the button runs the  wordNumber function. After that, html is updated with the correct number of underscores. 
 $("button").on('click', function() {
     wordNumber(wordList);
           $("#wordUn").html("<h1>" + underscores + "</h1>");
       })
 
-$("wordUn").on('keyup', function() {
-    gameRun(event);
-      $("#wordUn").html("<h1>" + underscores + "</h1>");
-      })
+//this doesn't do anything
 
-// $(document).on('keypress','selector', gameRun(event))
+// $("wordUn").on('keyup', function() {
+//     gameRun(letter);
+//       $("#wordUn").html("<h1>" + underscores + "</h1>");
+//       })
+
 // this is not working! >_<
 
 
-function gameRun (letter) {
+function gameRun(letter) {
 
-    // event = event || window.event;
     var letterInWord = word.indexOf(letter)
-    var wordSplit = word.split()
+    var wordSplit = word.split("")
 
     if (letterInWord == -1) {
 
       if (wrongGuess.length == 9) { 
-        document.write("You Lost! Au Revoir!"); 
+        $("#winOrLose").html("<h2>" + "You Lost :(" + "</h2>");
         return reStart(); }
       else { wrongGuess.push(letter);
         $("#wrong").html("<h2>" + wrongGuess + "</h2>");
@@ -86,39 +91,37 @@ function gameRun (letter) {
     } else {
 
         if (underscores == word.split()) {
-        $("#wingOrLose").html("<h2>" + "You Win!" + "</h2>");
+        $("#winOrLose").html("<h2>" + "You Win!" + "</h2>");
 
       } else {
 
-        (underscores.splice(letterInWord, 1, event));
+        (underscores.splice(letterInWord, 1, letter));
         $("#wordUn").html("<h2>" + underscores + "</h2>");
       }
       }
     }
 
 
-   
-
 
   function wordNumber(list) {
-    var compRandom = (list[(Math.floor(Math.random() * list.length ))]);
+    var compRandom = list[Math.floor(Math.random() * list.length )];
     for(var i = 0; i < compRandom.length; i++) {
       underscores.push('_ ');
   }
     return compRandom}
 
 
-  function won() {
-    if (underscores == word.split()) {
-      alert("Great Job! You won! Are you ready to play again? ");}
-     }
+  // function won() {
+  //   if (underscores == word.split()) {
+  //     alert("Great Job! You won! Are you ready to play again? ");}
+  //    }
 
 
   function reStart() {
     console.clear();
   }
 
-})
+// })
 
 
 
