@@ -15,15 +15,23 @@
 
 <body>
 
+<div class = "game">
+
 <h1 id='title'> Say Hello! </h1>
 
-<h2 id='alert'> Press any key to start the game! </h2>
+<button id='button'> Click me to Start! </button>
+
+<h2 id='wordUn'> </h2>
+
+<span id="derscores"></span>
+
+</div>
 
 
 
 <script type="text/javascript">
 
-// $(document).ready(function() {
+$(document).ready(function() {
 // starts as empty variable and will only have one variable at a time
 
   var underscores = []
@@ -42,13 +50,20 @@
   
 ;
 
+$("button").on('click', function() {
+    wordNumber(wordList);
+          $("#wordUn").html(underscores);
+      })
 
 // The game will start when the user selected a random key from the key board. Include HTML to update users.
 // When the user selects a random key, the computer randomly selects a word from the array wordList
   
+  // function updateScreen(z) {
+  //   document.getElementById("#derscores").innerHTML = z;
+  // }
 
-  function wordNumber(array) {
-    var compRandom = (array[(Math.floor(Math.random() * array.length ))]);
+  function wordNumber(list) {
+    var compRandom = (list[(Math.floor(Math.random() * list.length ))]);
     for(var i = 0; i < compRandom.length; i++) {
       underscores.push('_ ');
   }
@@ -88,7 +103,7 @@ function reStart() {
     console.clear();
   }
 
-// })
+})
 
   </script>
 
