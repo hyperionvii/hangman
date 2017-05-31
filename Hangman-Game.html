@@ -35,7 +35,7 @@
 
 <script type="text/javascript">
 
-// $(document).ready(function() {
+$(document).ready(function() {
 
 //Things going wrong:  - clicking on the button to start shows the underscores on the screen, but it's not the right number of underscores. Why are there more underscores? FIXED
 // -  Not all letters are updating in the underscores array...need to do something to review all letters in the array...not just the first letter.  
@@ -46,35 +46,35 @@
 
   var wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
 
-  var guess = ('');
-
-  var correctGuess = [];
-
   var wrongGuess = [];
 
-  var word = ('');
+  var word = '';
 
   var remaining = 9;
 
-  // var letter = jQuery.Event( "keyup" );
-  
-
-
-// This is working...mostly.  
-
-
 $("button").on('click', function() {
-    wordNumber(wordList);
-          $("#wordUn").html("<h1>" + underscores + "</h1>");
-      })
 
-// this is not working! >_<
+  wordNumber(wordList);
+  $("#wordUn").html("<h1>" + underscores + "</h1>");
+  $('#winOrLose').html('<h2> </h2>');
+  $('#wrong').html('<h2> </h2>');
 
-// $("#wordUn").on('keyup', function(event) {
-  //  $(event.target).data('number');
-//     gameRun(letter);
-//       $("#wordUn").html("<h1>" + underscores + "</h1>");
-//       })
+})
+
+
+$('#wordUn').on('keyup', function(event) {
+
+    var userInput = (event.target);
+
+    var value = userInput.data('#wordUn')
+    console.log(userInput);
+
+  gameRun(userInput);
+
+})
+
+
+
 
 function wordNumber(list) {
   var compRandom = list[Math.floor(Math.random() * list.length )];
@@ -95,7 +95,7 @@ function gameRun(letter) {
 
     if (wrongGuess.length == 9) {
       youLost();
-      return reStart();
+      reStart();
 
     } else {
 
@@ -109,6 +109,7 @@ function gameRun(letter) {
   } else {
 
     winCheck();
+
     for( i = letterInWord; i < word.length; i++) {
       if(word[i] == letter) {
         (underscores.splice(i, 1, letter));
@@ -124,12 +125,13 @@ function gameRun(letter) {
 //compares the underscores to the word.  If they it's equal, they win!
 function winCheck() {
   var wordSplit = word.split("")
-  if (underscores.toString() == wordSplit.toString()) { youWin()
+  if (underscores.toString() == wordSplit.toString()) { youWin();
 }}
 
 //alerts that they won!
 function youWin() {
-$("#winOrLose").html("<h2>" + "You Win!" + "</h2>"); 
+  $("#winOrLose").html("<h2>" + "You Win!" + "</h2>");
+  reStart();
 }
 
 //alerts that they lost
@@ -143,15 +145,6 @@ function wrongGuessUpdate() {
   $("#wrong").html("<h2>" + wrongGuess + "</h2>");
 }
 
-//checks the rest of the letters in the word
-
-function restOfWordCheck() {
-  for( i = letterInWord; i < word.length; i++) {
-    if(word[i] == letter) {
-      (underscores.splice(i, 1, letter));
-    }
-  }
-}
 
 //updates underscores on screen
 
@@ -159,37 +152,25 @@ function updateUnderscores() {
   $("#wordUn").html("<h2>" + underscores + "</h2>");
   }
 
+function reStart() {
+  
+  underscores = [];
 
-//starts the game over
-  function reStart() {
-    document.clear();
-  }
+  wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
+
+  wrongGuess = [];
+
+  word = '';
+
+  remaining = 9;
+
+  updateUnderscores();
 
 
-// })
+}
 
 
-
-
-  // User makes letter guesses. 3 things can happen when the user gueses. 1) The letter gueses populates as a correct answer. 2) The letter guess populates as an incorrect answer. 3) The game ends bc they maxed out their number of guesses or they won. 
-
-  // function game(event) {
-
-  //   var letterInWord = word.indexOf(event)
-  //   var wordSplit = word.split()
-
-  //   if (letterInWord == -1) {
-  //    if (wrongGuess.length == 9) { 
-  //    document.write("You Lost! Au Revoir!") 
-  //    return reStart() }
-  //    else {wrongGuess.push(event);} 
-  //   } else {
-  //     if (underscores == word.split()) {
-  //     alert("Great Job! You won! Are you ready to play again? ");
-  //   } else {
-  //    (underscores.splice(letterInWord, 1, event));}
-  //  }}
-
+})
 
 
   </script>
