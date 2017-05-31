@@ -44,7 +44,7 @@
 
   var underscores = [];
 
-  var wordList = ["hello", "honjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
+  var wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
 
   var guess = ('');
 
@@ -70,75 +70,101 @@ $("button").on('click', function() {
 
 // this is not working! >_<
 
-// $("wordUn").on('keyup', function() {
+// $("#wordUn").on('keyup', function(event) {
+  //  $(event.target).data('number');
 //     gameRun(letter);
 //       $("#wordUn").html("<h1>" + underscores + "</h1>");
 //       })
 
-do {
-    pos = radmWord.indexOf(guessedLetter, pos);
-
-    if(pos > -1) {
-        genRadmLetter[pos] = guessedLetter;
-        result = true;
-        pos++;
-    }
-} while(pos > -1 && pos < radmWord.length());
-
+function wordNumber(list) {
+  var compRandom = list[Math.floor(Math.random() * list.length )];
+  for(var i = 0; i < compRandom.length; i++) {
+    underscores.push('_ ');
+  }
+    word = compRandom;
+}
 
 
 
 function gameRun(letter) {
 
-    var letterInWord = word.indexOf((letter).toLowerCase())
-    var wordSplit = word.split("")
+  letter = letter.toLowerCase()
+  var letterInWord = word.indexOf(letter)
 
-    if (letterInWord == -1) {
+  if (letterInWord == -1) {
 
-      if (wrongGuess.length == 9) { 
-        $("#winOrLose").html("<h2>" + "You Lost :(" + "</h2>");
-        return reStart(); }
-      else { wrongGuess.push(letter);
-        $("#wrong").html("<h2>" + wrongGuess + "</h2>");
-          } 
+    if (wrongGuess.length == 9) {
+      youLost();
+      return reStart();
 
     } else {
 
-        if (underscores == word.split()) {
-        $("#winOrLose").html("<h2>" + "You Win!" + "</h2>");
-
-      } else {
-
-        //for( i = 0; )
-
-        // if the letter is == to underscores[indexOf(letter).toLowerCase]
-
-
-        (underscores.splice(letterInWord, 1, letter));
-        $("#wordUn").html("<h2>" + underscores + "</h2>");
+      if (letterInWord == -1) {
+        wrongGuess.push(letter);
       }
-      }
+
+      wrongGuessUpdate();
     }
 
+  } else {
 
-
-  function wordNumber(list) {
-    var compRandom = list[Math.floor(Math.random() * list.length )];
-    for(var i = 0; i < compRandom.length; i++) {
-      underscores.push('_ ');
+    winCheck();
+    for( i = letterInWord; i < word.length; i++) {
+      if(word[i] == letter) {
+        (underscores.splice(i, 1, letter));
+      }
+    };
+    updateUnderscores();
+    winCheck();
   }
-    word = compRandom}
+}
 
 
-  // function won() {
-  //   if (underscores == word.split()) {
-  //     alert("Great Job! You won! Are you ready to play again? ");}
-  //    }
+
+//compares the underscores to the word.  If they it's equal, they win!
+function winCheck() {
+  var wordSplit = word.split("")
+  if (underscores.toString() == wordSplit.toString()) { youWin()
+}}
+
+//alerts that they won!
+function youWin() {
+$("#winOrLose").html("<h2>" + "You Win!" + "</h2>"); 
+}
+
+//alerts that they lost
+
+function youLost() {
+  $("#winOrLose").html("<h2>" + "You Lost :(" + "</h2>");
+}
+
+//updates wrongGuess on screen
+function wrongGuessUpdate() {
+  $("#wrong").html("<h2>" + wrongGuess + "</h2>");
+}
+
+//checks the rest of the letters in the word
+
+function restOfWordCheck() {
+  for( i = letterInWord; i < word.length; i++) {
+    if(word[i] == letter) {
+      (underscores.splice(i, 1, letter));
+    }
+  }
+}
+
+//updates underscores on screen
+
+function updateUnderscores() {
+  $("#wordUn").html("<h2>" + underscores + "</h2>");
+  }
 
 
+//starts the game over
   function reStart() {
-    console.clear();
+    document.clear();
   }
+
 
 // })
 
