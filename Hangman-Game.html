@@ -17,15 +17,16 @@
 
 <div class = "game">
 
-<h1 id='title'> Say Hello! </h1>
 
-<button id='button'> Click me to Start! </button>
+  <h1 id='title'> Say Hello! </h1>
 
-<h2 id='wordUn'> </h2>
+  <button id='button'> Click me to Start! </button>
 
-<h2 id='wrong'> </h2>
+  <h2 id='wordUn'> </h2>
 
-<h2 id='winOrLose'> </h2>
+  <h2 id='wrong'> </h2>
+
+  <h2 id='winOrLose'> </h2>
 
 
 </div>
@@ -62,15 +63,11 @@ $("button").on('click', function() {
 })
 
 
-$('#wordUn').on('keyup', function(event) {
+$(document).keyup(function(event) {
 
-    var userInput = (event.target);
-
-    var value = userInput.data('#wordUn')
-    console.log(userInput);
-
-  gameRun(userInput);
-
+//save the event as a variable
+    var userInput = event.target;
+    gameRun(userInput);
 })
 
 
@@ -88,8 +85,8 @@ function wordNumber(list) {
 
 function gameRun(letter) {
 
-  letter = letter.toLowerCase()
-  var letterInWord = word.indexOf(letter)
+  var letter = letter.toLowerCase();
+  var letterInWord = word.indexOf(letter);
 
   if (letterInWord == -1) {
 
@@ -119,6 +116,7 @@ function gameRun(letter) {
     winCheck();
   }
 }
+
 
 
 
