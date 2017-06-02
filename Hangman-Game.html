@@ -7,34 +7,51 @@
 
   <meta charset="UTF-8">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylehangman.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+SC:700|Kranky" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class = "game">
+<div class = "container">
 
+  <div class="jumbotron">
+    <h1 class="display-3">Hangman Game</h1>
+    <hr class="my-4">
+    <p class="lead">Hello! From Around the World</p>
+  </div>
 
-  <h1 id='title'> Say Hello! </h1>
+  <div class="panel panel-default">
+    <div class="panel-body">  
+      <button id='button'> Click me to Start! </button>
+      <h2 id='winOrLose'> </h2>
+    </div>
+  </div>
 
-  <button id='button'> Click me to Start! </button>
+  <div class="panel panel-default">
+    <div class="panel-heading">Word to Guess!</div>
+    <div class="panel-body">  
+      <h2 id='wordUn'> _____ </h2>
+    </div>
+  </div>
 
-  <h2 id='wordUn'> </h2>
-
-  <h2 id='wrong'> </h2>
-
-  <h2 id='winOrLose'> </h2>
-
+  <div class="panel panel-default">
+    <div class="panel-heading"> Wrong Guesses </div>
+    <div class="panel-body">  
+      <h2 id='wrong'> </h2>
+    </div>
+  </div>
 
 </div>
 
+<script>
 
-
-
-<script type="text/javascript">
 
 $(document).ready(function() {
 
@@ -45,7 +62,7 @@ $(document).ready(function() {
 
   var underscores = [];
 
-  var wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
+  var wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba", "aloha", "salut", "privet", "ahoj", "nihao"];
 
   var wrongGuess = [];
 
@@ -154,7 +171,7 @@ function reStart() {
   
   underscores = [];
 
-  wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba"];
+  wordList = ["hello", "bonjour", "ola", "yo", "salaam", "namaste", "ohayo", "merhaba", "aloha", "salut", "privet", "ahoj", "nihao"]
 
   wrongGuess = [];
 
@@ -170,8 +187,7 @@ function reStart() {
 
 })
 
-
-  </script>
+</script>
 
 
 </body>

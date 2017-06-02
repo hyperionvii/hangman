@@ -1,0 +1,17 @@
+body {
+    background-image: url("images/flags-funky-flags-clip.jpg");
+    background-size: 500px 500px;
+    background-repeat: repeat;
+    background-color: #cccccc;
+}
+
+h1, h2, h3, p, .panel-heading,{
+	text-align: center;
+	vertical-align: center;
+	font-family: 'Alegreya SC', serif;
+	font-size: 150%;
+}
+
+#button {
+
+}
