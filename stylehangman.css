@@ -5,7 +5,7 @@ body {
     background-color: #cccccc;
 }
 
-h1, h2, h3, p, .panel-heading,{
+h1, h2, h3, p, .panel-heading {
 	text-align: center;
 	vertical-align: center;
 	font-family: 'Alegreya SC', serif;
@@ -13,5 +13,8 @@ h1, h2, h3, p, .panel-heading,{
 }
 
 #button {
+
+	margin: auto;
+	display: block;
 
 }
